@@ -149,7 +149,7 @@ def mk_bp(*args, **kwargs):
                       "body": permalink + "\n\nPlease change to a good descriptive title and tell us what should be improved.",
                     })
                 editLink = 'https://github.com/lep/jassdoc/edit/master/%s#L%s' % (fileName, linenumber)
-                discussHtml = '(<a href="%s" rel="nofollow" >suggest an edit</a> or <a href="%s">discuss on Github</a>)' % (editLink, newIssueLinkEncoded)
+                discussHtml = '(<a href="%s">raise an issue to discuss on Github</a> or <a href="%s" rel="nofollow" >submit a PR</a>)' % (newIssueLinkEncoded, editLink)
                 annotations.append({"name": "Source", "html": sourceFileLinkHtml + " " + discussHtml})
             elif annotation['name'] == 'source-code':
                 annotations.append({"name": "Source code", "html": "<pre><code>%s</code></pre>" % annotation['value']})
