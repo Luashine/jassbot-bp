@@ -141,12 +141,13 @@ def mk_bp(*args, **kwargs):
                 annotations.append({"name": "pure", "html": "This function is pure. For the same values passed to it, it will always return the same value."})
             elif annotation['name'] == 'source-file':
                 fileName = annotation['value']
+                jassdocLink = 'https://lep.nrw/jassbot' + request.path
                 permalink = 'https://github.com/lep/jassdoc/blob/%s/%s#L%s' % (commit, fileName, linenumber)
                 sourceFileLinkHtml = '<a href="%s" rel="nofollow" >%s</a>' % (permalink, fileName)
                 # New issue link accepts either body or permalink, not both. Maybe aliases of one another.
                 newIssueLinkEncoded = 'https://github.com/lep/jassdoc/issues/new?' + urlencode(
                     { "title": "[web] %s: %s - " % (fileName, entity),
-                      "body": permalink + "\n\nPlease change to a good descriptive title and tell us what should be improved.",
+                      "body": jassdocLink + "\n\n" + permalink + "\n\nPlease change to a good descriptive title and tell us what should be improved.",
                     })
                 editLink = 'https://github.com/lep/jassdoc/edit/master/%s#L%s' % (fileName, linenumber)
                 discussHtml = '(<a href="%s" rel="nofollow" >suggest an edit</a> or <a href="%s">discuss on Github</a>)' % (editLink, newIssueLinkEncoded)
